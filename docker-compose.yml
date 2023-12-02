@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  trino:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./trino/etc/catalog:/etc/trino/catalog
+      - ./trino/etc/jvm.config:/etc/trino/jvm.config
+      - ./trino/etc/config.properties:/etc/trino/config.properties
+    image: ajvelezrueda/trino-jdbc-connector-sample
+    container_name: trino
+    ports:
+      - 8080:8080
